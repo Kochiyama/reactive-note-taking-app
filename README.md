@@ -24,3 +24,11 @@ This app is a simple note taking app:
 - create new categories
 
 This app was implement following the concepts of reactive programming.
+
+# test on your machine
+
+1. clone this repo
+2. run `cd reactive-note-taking-app`
+3. run `yarn`
+4. run `yarn start`
+5. open http://localhost:3000/
