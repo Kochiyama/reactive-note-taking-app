@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import CategoryObserver from '../Observers/CategoryObserver';
-
 import styles from '../styles/components/Categories.module.css';
 
 export default class Categories extends Component {
