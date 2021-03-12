@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CategoryController from '../Controllers/CategoryController';
+import NoteController from '../Controllers/NoteController';
 
 import styles from '../styles/components/CreateNoteFormulary.module.css';
 
@@ -6,10 +8,26 @@ class CreateNoteFormulary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			categories: ['padrão'],
 			category: 'padrão',
 			title: '',
 			text: '',
 		};
+	}
+
+	componentDidMount() {
+		CategoryController.subscribe(this.updateLocalCategoryState.bind(this));
+	}
+
+	componentWillUnmount() {
+		CategoryController.unsubscribe(this.updateLocalCategoryState.bind(this));
+	}
+
+	updateLocalCategoryState(category) {
+		this.setState({
+			...this.state,
+			categories: [...this.state.categories, category],
+		});
 	}
 
 	handleOptionChange(event) {
@@ -18,7 +36,6 @@ class CreateNoteFormulary extends Component {
 			...this.state,
 			category: event.target.value,
 		});
-		console.log(event.target.value);
 	}
 
 	handleTitleChange(event) {
@@ -40,7 +57,7 @@ class CreateNoteFormulary extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		event.stopPropagation();
-		this.props.createNote(
+		NoteController.createNote(
 			this.state.title,
 			this.state.text,
 			this.state.category
@@ -53,7 +70,7 @@ class CreateNoteFormulary extends Component {
 				<label>
 					Categoria
 					<select onChange={this.handleOptionChange.bind(this)}>
-						{this.props.categories.map((category, index) => (
+						{CategoryController.categories.map((category, index) => (
 							<option value={category} key={index}>
 								{category}
 							</option>

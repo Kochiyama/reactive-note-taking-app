@@ -1,15 +1,9 @@
-class NoteController {
+import ObserverController from './ObserverController';
+
+class NoteController extends ObserverController {
 	constructor() {
+		super();
 		this.notes = [];
-		this.subscribers = [];
-	}
-
-	subscribe(func) {
-		this.subscribers.push(func);
-	}
-
-	unsubscribe(func) {
-		this.subscribers = this.subscribers.filter(observer => observer !== func);
 	}
 
 	notify() {

@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
 import Note from './Note';
 
+import NoteController from '../Controllers/NoteController';
+
 import styles from '../styles/components/NoteList.module.css';
 
 export default class NoteList extends Component {
+	constructor() {
+		super();
+
+		this.state = {
+			notes: [],
+		};
+	}
+
+	componentDidMount() {
+		NoteController.subscribe(this.updateLocalNoteState.bind(this));
+	}
+
+	componentWillUnmount() {
+		NoteController.unsubscribe(this.updateLocalNoteState.bind(this));
+	}
+
+	updateLocalNoteState(notes) {
+		this.setState({
+			...this.state,
+			notes: notes,
+		});
+	}
+
 	render() {
 		return (
 			<ul className={styles.notesList}>
-				{this.props.notes.map((note, index) => {
+				{this.state.notes.map((note, index) => {
 					return (
 						<li key={index}>
 							<Note
 								index={index}
-								deleteNote={this.props.deleteNote}
 								title={note.title}
 								text={note.text}
 								category={note.category}
