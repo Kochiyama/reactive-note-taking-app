@@ -1,0 +1,33 @@
+.form {
+	background: #263036;
+	padding: 2rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.form label {
+	display: flex;
+	flex-direction: column;
+
+	font-size: 24px;
+
+	color: #f6f6f6;
+}
+
+.form label input,
+.form textarea,
+.form select {
+	padding: 0.5rem 0.8rem;
+	margin-bottom: 1rem;
+	border: none;
+	font-size: 20px;
+}
+
+.form button {
+	padding: 0.5rem;
+	font-size: 24px;
+	border: none;
+
+	background: #dfdfff;
+}
