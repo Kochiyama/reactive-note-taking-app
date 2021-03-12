@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Note from './Note';
 
-import NoteController from '../Controllers/NoteController';
+import NoteObserver from '../Observers/NoteObserver';
 
 import styles from '../styles/components/NoteList.module.css';
 
@@ -15,11 +15,11 @@ export default class NoteList extends Component {
 	}
 
 	componentDidMount() {
-		NoteController.subscribe(this.updateLocalNoteState.bind(this));
+		NoteObserver.subscribe(this.updateLocalNoteState.bind(this));
 	}
 
 	componentWillUnmount() {
-		NoteController.unsubscribe(this.updateLocalNoteState.bind(this));
+		NoteObserver.unsubscribe(this.updateLocalNoteState.bind(this));
 	}
 
 	updateLocalNoteState(notes) {

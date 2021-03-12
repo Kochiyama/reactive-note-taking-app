@@ -1,6 +1,6 @@
-import ObserverController from './ObserverController';
+import Observer from './Observer';
 
-class CategoryController extends ObserverController {
+class CategoryObserver extends Observer {
 	constructor() {
 		super();
 		this.categories = ['padrão'];
@@ -16,4 +16,4 @@ class CategoryController extends ObserverController {
 	}
 }
 
-export default new CategoryController();
+export default new CategoryObserver();

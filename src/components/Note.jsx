@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import NoteController from '../Controllers/NoteController';
+import NoteObserver from '../Observers/NoteObserver';
 
 import styles from '../styles/components/Note.module.css';
 
 class Note extends Component {
 	delete() {
 		const index = this.props.index;
-		NoteController.deleteNote(index);
+		NoteObserver.deleteNote(index);
 	}
 
 	render() {

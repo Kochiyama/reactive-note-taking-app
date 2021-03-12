@@ -1,6 +1,6 @@
-import ObserverController from './ObserverController';
+import Observer from './Observer';
 
-class NoteController extends ObserverController {
+class NoteObserver extends Observer {
 	constructor() {
 		super();
 		this.notes = [];
@@ -27,4 +27,4 @@ class NoteController extends ObserverController {
 	}
 }
 
-export default new NoteController();
+export default new NoteObserver();

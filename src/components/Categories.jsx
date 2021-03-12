@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import CategoryController from '../Controllers/CategoryController';
+import CategoryObserver from '../Observers/CategoryObserver';
 
 import styles from '../styles/components/Categories.module.css';
 
@@ -14,11 +14,11 @@ export default class Categories extends Component {
 	}
 
 	componentDidMount() {
-		CategoryController.subscribe(this.updateLocalCategoryState.bind(this));
+		CategoryObserver.subscribe(this.updateLocalCategoryState.bind(this));
 	}
 
 	componentWillUnmount() {
-		CategoryController.unsubscribe(this.updateLocalCategoryState.bind(this));
+		CategoryObserver.unsubscribe(this.updateLocalCategoryState.bind(this));
 	}
 
 	updateLocalCategoryState(category) {
@@ -29,7 +29,7 @@ export default class Categories extends Component {
 
 	handleKeyUp(event) {
 		if (event.key === 'Enter' && event.target.value) {
-			CategoryController.addCategory(event.target.value);
+			CategoryObserver.addCategory(event.target.value);
 
 			event.target.value = '';
 		}
